@@ -1,0 +1,28 @@
+# Dependencies
+node_modules/
+backend/venv/
+.venv/
+env/
+venv/
+ENV/
+
+# SvelteKit
+.svelte-kit/
+build/
+dist/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.coverage
+.env
+
+# IDEs
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db

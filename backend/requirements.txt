@@ -1,0 +1,14 @@
+fastapi
+uvicorn[standard]
+pydantic
+pydantic-settings
+httpx
+requests
+python-whois
+dnspython
+reportlab
+python-multipart
+websockets
+slowapi
+python-dotenv
+colorlog
