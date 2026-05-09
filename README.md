@@ -43,7 +43,8 @@ The backend is a high-performance Python application built with **FastAPI**. It 
 The frontend is a cutting-edge **SvelteKit** application utilizing the latest **Svelte 5 Runes** for state management.
 - **Reactive UI**: Instant updates as data arrives via WebSockets.
 - **Visual Analytics**: Interactive charts and gauges built with Chart.js.
-- **Design System**: A sleek, dark-themed (or light) interface powered by **TailwindCSS 4**.
+- **Optimized Layout**: Refined grid system for perfect alignment of scan metrics and results.
+- **Design System**: A sleek, professional interface powered by **TailwindCSS 4** with global scrollbar management for a seamless experience.
 
 ---
 
