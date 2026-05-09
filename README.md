@@ -126,5 +126,6 @@ npm run dev
 
 <div align="center">
   <p>Built with ❤️ for a Safer Web</p>
+  <p>Developed by <strong>Priyan</strong></p>
   <p>© 2026 SiteScanner Platform. All Rights Reserved.</p>
 </div>
