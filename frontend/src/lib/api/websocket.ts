@@ -3,10 +3,15 @@ import { historyStore } from '$lib/stores/historyStore.svelte';
 
 export class ScanWebSocket {
 	private socket: WebSocket | null = null;
-	private static WS_URL = 'ws://localhost:8000/api/v1/ws/scan';
+	
+	private static getWsUrl() {
+		const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:8000/api/v1';
+		const wsUrl = apiUrl.replace(/^http/, 'ws');
+		return `${wsUrl}/ws/scan`;
+	}
 
 	connect(scanId: string) {
-		this.socket = new WebSocket(`${ScanWebSocket.WS_URL}/${scanId}`);
+		this.socket = new WebSocket(`${ScanWebSocket.getWsUrl()}/${scanId}`);
 
 		this.socket.onopen = () => {
 			console.log('WebSocket Connected');
