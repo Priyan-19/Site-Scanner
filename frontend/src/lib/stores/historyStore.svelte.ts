@@ -1,5 +1,7 @@
 import type { ScanResult } from './scanStore.svelte';
 
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000/api/v1';
+
 class HistoryStore {
 	items = $state<ScanResult[]>([]);
 	isLoading = $state(false);
@@ -8,7 +10,7 @@ class HistoryStore {
 	async fetchHistory() {
 		this.isLoading = true;
 		try {
-			const response = await fetch('http://localhost:8000/api/v1/history');
+			const response = await fetch(`${API_BASE_URL}/history`);
 			if (response.ok) {
 				const data = await response.json();
 				// Map backend response to frontend model if needed, but assuming they match for now
