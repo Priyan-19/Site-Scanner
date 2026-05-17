@@ -51,7 +51,7 @@
 		datasets: [
 			{
 				data: severityCounts(),
-				backgroundColor: ['#10b981', '#f59e0b', '#ef4444', '#7f1d1d'],
+				backgroundColor: ['#10b981', '#f59e0b', '#f97316', '#ef4444'],
 				borderWidth: 0
 			}
 		]
@@ -63,7 +63,7 @@
 			{
 				label: 'Findings',
 				data: categoryData(),
-				backgroundColor: '#3b82f6',
+				backgroundColor: '#00ffcc',
 				borderRadius: 8
 			}
 		]
@@ -75,8 +75,8 @@
 			{
 				label: 'Security Score',
 				data: trendData().data,
-				borderColor: '#3b82f6',
-				backgroundColor: 'rgba(59, 130, 246, 0.1)',
+				borderColor: '#00ffcc',
+				backgroundColor: 'rgba(0, 255, 204, 0.1)',
 				fill: true,
 				tension: 0.4
 			}
@@ -113,14 +113,14 @@
 	const legendItems = [
 		{ label: 'Low', color: '#10b981' },
 		{ label: 'Medium', color: '#f59e0b' },
-		{ label: 'High', color: '#ef4444' },
-		{ label: 'Critical', color: '#7f1d1d' }
+		{ label: 'High', color: '#f97316' },
+		{ label: 'Critical', color: '#ef4444' }
 	];
 </script>
 
 <div class="grid grid-cols-1 gap-6 lg:grid-cols-3">
 	<div class="card h-[320px] p-6 sm:h-[400px]">
-		<h4 class="mb-6 text-sm font-bold tracking-widest text-slate-800 uppercase">
+		<h4 class="mb-6 text-sm font-bold tracking-widest text-neutral-200 uppercase">
 			Risk Distribution
 		</h4>
 		<div class="h-[180px] sm:h-[260px]">
@@ -132,14 +132,14 @@
 			{#each legendItems as item}
 				<div class="flex items-center space-x-2">
 					<div class="h-3 w-3 rounded-full" style="background-color: {item.color}"></div>
-					<span class="text-xs font-bold text-slate-600 sm:text-sm">{item.label}</span>
+					<span class="text-xs font-bold text-neutral-400 sm:text-sm">{item.label}</span>
 				</div>
 			{/each}
 		</div>
 	</div>
 
 	<div class="card h-[320px] p-6 sm:h-[400px] lg:col-span-2">
-		<h4 class="mb-6 text-sm font-bold tracking-widest text-slate-800 uppercase">
+		<h4 class="mb-6 text-sm font-bold tracking-widest text-neutral-200 uppercase">
 			Findings by Category
 		</h4>
 		<div class="h-[220px] sm:h-[300px]">
@@ -148,7 +148,7 @@
 	</div>
 
 	<div class="card h-[320px] p-6 sm:h-[400px] lg:col-span-3">
-		<h4 class="mb-6 text-sm font-bold tracking-widest text-slate-800 uppercase">
+		<h4 class="mb-6 text-sm font-bold tracking-widest text-neutral-200 uppercase">
 			Security Score Trend
 		</h4>
 		<div class="h-[220px] sm:h-[300px]">

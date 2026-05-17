@@ -1,20 +1,22 @@
 @import 'tailwindcss';
 
-:root {
-	--color-primary: #0066ff;
-	--color-primary-dark: #0052cc;
-	--color-primary-light: #e6f0ff;
-	--color-secondary: #00d4ff;
-	--color-accent: #00f2ff;
+@theme {
+	--color-primary: #00ffcc; /* Changed to #00ffcc to match image exactly */
+	--color-primary-dark: #00e6b8;
+	--color-primary-light: rgba(0, 255, 204, 0.1);
+	--color-secondary: #00ffcc;
+	--color-accent: #00ffcc;
 
 	--color-success: #10b981;
 	--color-warning: #f59e0b;
 	--color-error: #ef4444;
 	--color-info: #3b82f6;
+}
 
-	--color-bg-light: #f8fafc;
-	--color-card-bg: #ffffff;
-	--color-border-light: #e2e8f0;
+:root {
+	--color-bg-light: #0a0a0a; /* Dark background */
+	--color-card-bg: #111111; /* Slightly lighter for cards */
+	--color-border-light: #222222;
 
 	--font-sans: 'Inter', system-ui, -apple-system, sans-serif;
 }
@@ -22,12 +24,13 @@
 @layer base {
 	body {
 		background-color: var(--color-bg-light);
-		color: #0f172a; /* slate-900 */
+		color: #e5e5e5; /* Light text */
 		-webkit-font-smoothing: antialiased;
 		-moz-osx-font-smoothing: grayscale;
 		font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
 		scrollbar-width: none !important;
 		-ms-overflow-style: none !important;
+		overflow: hidden;
 	}
 	body::-webkit-scrollbar {
 		display: none !important;
@@ -36,34 +39,34 @@
 
 @layer components {
 	.glass {
-		background-color: rgba(255, 255, 255, 0.8);
+		background-color: rgba(17, 17, 17, 0.8);
 		backdrop-filter: blur(12px);
-		border: 1px solid rgba(255, 255, 255, 0.2);
-		box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+		border: 1px solid rgba(255, 255, 255, 0.05);
+		box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.5);
 	}
 
 	.card {
 		background-color: var(--color-card-bg);
 		border: 1px solid var(--color-border-light);
 		border-radius: 0.75rem;
-		box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+		box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.5);
 		transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 	}
 
 	.card:hover {
 		box-shadow:
-			0 4px 6px -1px rgba(0, 0, 0, 0.1),
-			0 2px 4px -1px rgba(0, 0, 0, 0.06);
+			0 4px 6px -1px rgba(0, 0, 0, 0.6),
+			0 2px 4px -1px rgba(0, 0, 0, 0.4);
 	}
 
 	.btn-primary {
 		background-color: var(--color-primary);
-		color: white;
+		color: #000000;
 		padding: 0.625rem 1.5rem;
 		border-radius: 0.5rem;
-		font-weight: 500;
+		font-weight: 600;
 		transition: all 0.2s;
-		box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+		box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.5);
 	}
 
 	.btn-primary:hover {

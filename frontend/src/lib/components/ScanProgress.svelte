@@ -22,12 +22,12 @@
 </script>
 
 {#if scanStore.stage !== 'idle'}
-	<div class="mx-auto mb-12 max-w-4xl px-4" transition:fade>
+	<div class="mx-auto mb-12 mt-12 max-w-4xl px-4" transition:fade>
 		<div class="card p-6 md:p-8">
 			<div class="mb-8 flex items-center justify-between">
 				<div>
-					<h3 class="text-xl font-bold text-slate-800">Scan Progress</h3>
-					<p class="text-sm text-slate-500">Real-time analysis in progress...</p>
+					<h3 class="text-xl font-bold text-neutral-200">Scan Progress</h3>
+					<p class="text-sm text-neutral-400">Real-time analysis in progress...</p>
 				</div>
 				<div class="text-right">
 					<span class="text-primary text-3xl font-black">{scanStore.progress}%</span>
@@ -35,7 +35,7 @@
 			</div>
 
 			<!-- Progress Bar -->
-			<div class="mb-10 h-3 w-full overflow-hidden rounded-full bg-slate-100">
+			<div class="mb-10 h-3 w-full overflow-hidden rounded-full bg-[#1a1a1a]">
 				<div
 					class="from-primary to-secondary h-full bg-gradient-to-r transition-all duration-500 ease-out"
 					style="width: {scanStore.progress}%"
@@ -49,32 +49,32 @@
 						class="flex items-center space-x-3 rounded-lg border p-3 transition-colors {i <=
 						currentStageIndex
 							? 'border-primary-light bg-primary-light/30'
-							: 'border-slate-100 bg-slate-50 opacity-60'}"
+							: 'border-[#222222] bg-[#111111] opacity-60'}"
 					>
 						{#if i < currentStageIndex || scanStore.stage === 'completed'}
 							<CheckCircle2 class="text-success h-5 w-5" />
 						{:else if i === currentStageIndex}
 							<Loader2 class="text-primary h-5 w-5 animate-spin" />
 						{:else}
-							<Circle class="h-5 w-5 text-slate-300" />
+							<Circle class="h-5 w-5 text-neutral-600" />
 						{/if}
 						<span
 							class="text-sm font-semibold {i <= currentStageIndex
-								? 'text-slate-800'
-								: 'text-slate-400'}">{stage.label}</span
+								? 'text-neutral-200'
+								: 'text-neutral-500'}">{stage.label}</span
 						>
 					</div>
 				{/each}
 			</div>
 
 			<!-- Logs Terminal -->
-			<div class="overflow-hidden rounded-xl bg-slate-900 shadow-inner">
+			<div class="overflow-hidden rounded-xl bg-[#050505] shadow-inner border border-[#222222]">
 				<div
-					class="flex items-center justify-between border-b border-slate-700 bg-slate-800 px-4 py-2"
+					class="flex items-center justify-between border-b border-[#222222] bg-[#1a1a1a] px-4 py-2"
 				>
 					<div class="flex items-center space-x-2">
-						<Terminal class="h-4 w-4 text-slate-400" />
-						<span class="font-mono text-xs tracking-widest text-slate-400 uppercase">Live Logs</span
+						<Terminal class="h-4 w-4 text-neutral-500" />
+						<span class="font-mono text-xs tracking-widest text-neutral-500 uppercase">Live Logs</span
 						>
 					</div>
 					<div class="flex space-x-1.5">
@@ -88,7 +88,7 @@
 				>
 					{#each scanStore.logs as log}
 						<div class="flex space-x-3" transition:slide={{ axis: 'y' }}>
-							<span class="shrink-0 text-slate-500">[{log.timestamp}]</span>
+							<span class="shrink-0 text-neutral-400">[{log.timestamp}]</span>
 							<span
 								class={log.level === 'success'
 									? 'text-emerald-400'
@@ -103,7 +103,7 @@
 						</div>
 					{/each}
 					{#if scanStore.stage !== 'completed' && scanStore.stage !== 'failed'}
-						<div class="flex items-center space-x-2 text-slate-400">
+						<div class="flex items-center space-x-2 text-neutral-500">
 							<span class="animate-pulse">_</span>
 						</div>
 					{/if}

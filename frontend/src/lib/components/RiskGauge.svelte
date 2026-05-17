@@ -29,8 +29,8 @@
 </script>
 
 <div class="card overflow-hidden">
-	<div class="border-b border-slate-100 bg-slate-50 px-6 py-4">
-		<h3 class="text-sm font-bold tracking-widest text-slate-800 uppercase">Security Score</h3>
+	<div class="border-b border-[#222222] bg-[#111111] px-6 py-4">
+		<h3 class="text-sm font-bold tracking-widest text-neutral-200 uppercase">Security Score</h3>
 	</div>
 	<div class="flex flex-col items-center p-8 text-center">
 		<div class="relative inline-flex items-center justify-center">
@@ -59,8 +59,8 @@
 			</svg>
 
 			<div class="absolute flex flex-col items-center justify-center">
-				<span class="text-4xl font-black text-slate-800 sm:text-5xl">{score}</span>
-				<span class="text-xs font-bold tracking-widest text-slate-400 uppercase">Points</span>
+				<span class="text-4xl font-black text-neutral-200 sm:text-5xl">{score}</span>
+				<span class="text-xs font-bold tracking-widest text-neutral-500 uppercase">Points</span>
 			</div>
 		</div>
 
@@ -80,9 +80,9 @@
 				<span>{riskLevel} Risk</span>
 			</div>
 
-			<p class="mt-4 text-sm leading-relaxed text-slate-500">
+			<p class="mt-4 text-sm leading-relaxed text-neutral-400">
 				Your security posture is
-				<span class="font-bold text-slate-700">
+				<span class="font-bold text-neutral-300">
 					{score > 80 ? 'Excellent' : score > 60 ? 'Good' : score > 40 ? 'Fair' : 'Critical'}
 				</span>.
 				{score < 60

@@ -10,6 +10,8 @@
 	import { fade, fly } from 'svelte/transition';
 	import { ShieldAlert, ShieldCheck, Download, Share2, RefreshCw } from 'lucide-svelte';
 
+	let isScanActive = $derived(scanStore.stage !== 'idle' || scanStore.result !== null);
+
 	const mockVulnerabilities = [
 		{
 			title: 'Missing Content-Security-Policy Header',
@@ -47,29 +49,35 @@
 	];
 </script>
 
-<Navbar />
+<div class="flex h-screen w-full flex-col overflow-hidden bg-[#0a0a0a]">
+	<Navbar />
 
-<main class="min-h-screen pb-20">
-	<ScanInput />
+	<main
+		class="flex w-full flex-1 flex-col {isScanActive
+			? 'overflow-y-auto'
+			: 'items-center justify-center overflow-hidden'}"
+	>
+		<div class="w-full {isScanActive ? 'pb-20 pt-8' : ''}">
+			<ScanInput />
 
-	<ScanProgress />
+			<ScanProgress />
 
 	{#if scanStore.result}
 		<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8" in:fade={{ delay: 300 }}>
 			<!-- Dashboard Header -->
 			<div class="mb-10 flex flex-col justify-between gap-4 md:flex-row md:items-center">
 				<div>
-					<h2 class="text-xl font-extrabold tracking-tight text-slate-900 sm:text-2xl md:text-3xl">
+					<h2 class="text-xl font-extrabold tracking-tight text-white sm:text-2xl md:text-3xl">
 						Security Analysis Report
 					</h2>
-					<p class="font-medium text-slate-500">
+					<p class="font-medium text-neutral-400">
 						Target: <span class="text-primary font-bold">{scanStore.result.target}</span> • Scanned
 						on {new Date().toLocaleDateString()}
 					</p>
 				</div>
 				<div class="flex flex-wrap items-center gap-3">
 					<button
-						class="flex items-center space-x-2 rounded-lg border border-slate-200 bg-white px-4 py-2 text-sm font-bold text-slate-700 transition-colors hover:bg-slate-50"
+						class="flex items-center space-x-2 rounded-lg border border-[#333333] bg-[#111111] px-4 py-2 text-sm font-bold text-neutral-300 transition-colors hover:bg-[#111111]"
 					>
 						<Share2 class="h-4 w-4" />
 						<span>Share</span>
@@ -92,8 +100,8 @@
 
 				<div class="lg:col-span-2">
 					<div class="mb-6 flex items-center justify-between">
-						<h3 class="text-xl font-bold text-slate-800">Key Findings</h3>
-						<div class="flex items-center space-x-4 text-xs font-bold text-slate-500">
+						<h3 class="text-xl font-bold text-neutral-200">Key Findings</h3>
+						<div class="flex items-center space-x-4 text-xs font-bold text-neutral-400">
 							<span class="flex items-center space-x-1.5">
 								<div class="h-2 w-2 rounded-full bg-red-500"></div>
 								<span
@@ -120,7 +128,7 @@
 					</div>
 
 					<button
-						class="hover:border-primary hover:text-primary group mt-6 w-full rounded-xl border-2 border-dashed border-slate-200 py-4 font-bold text-slate-400 transition-all"
+						class="hover:border-primary hover:text-primary group mt-6 w-full rounded-xl border-2 border-dashed border-[#333333] py-4 font-bold text-neutral-500 transition-all"
 					>
 						<div class="flex items-center justify-center space-x-2">
 							<RefreshCw class="h-4 w-4 transition-transform duration-500 group-hover:rotate-180" />
@@ -134,20 +142,20 @@
 			<div class="grid grid-cols-1 gap-8 lg:grid-cols-3">
 				<div class="flex flex-col">
 					<div class="card overflow-hidden">
-						<div class="border-b border-slate-100 bg-slate-50 px-6 py-4">
-							<h4 class="text-sm font-bold tracking-widest text-slate-800 uppercase">
+						<div class="border-b border-[#222222] bg-[#111111] px-6 py-4">
+							<h4 class="text-sm font-bold tracking-widest text-neutral-200 uppercase">
 								Scan Summary
 							</h4>
 						</div>
-						<div class="divide-y divide-slate-50 p-0">
+						<div class="divide-y divide-[#222222] p-0">
 							{#each Object.entries(scanStore.result.summary) as [key, value]}
 								<div
-									class="flex items-center justify-between px-6 py-4 transition-colors hover:bg-slate-50/50"
+									class="flex items-center justify-between px-6 py-4 transition-colors hover:bg-[#111111]/50"
 								>
-									<span class="text-sm font-semibold text-slate-600 capitalize">{key}</span>
+									<span class="text-sm font-semibold text-neutral-400 capitalize">{key}</span>
 									<div class="flex items-center space-x-2">
-										<span class="text-sm font-bold text-slate-900">{value}</span>
-										<span class="text-[10px] font-bold text-slate-400 uppercase">Issues</span>
+										<span class="text-sm font-bold text-white">{value}</span>
+										<span class="text-[10px] font-bold text-neutral-500 uppercase">Issues</span>
 									</div>
 								</div>
 							{/each}
@@ -171,11 +179,13 @@
 			<!-- Charts Section -->
 			<div class="mt-16">
 				<div class="mb-8">
-					<h3 class="text-2xl font-bold tracking-tight text-slate-900">Security Analytics</h3>
-					<p class="text-slate-500">Visual representation of the target's security posture.</p>
+					<h3 class="text-2xl font-bold tracking-tight text-white">Security Analytics</h3>
+					<p class="text-neutral-400">Visual representation of the target's security posture.</p>
 				</div>
 				<Charts />
 			</div>
 		</div>
 	{/if}
-</main>
+		</div>
+	</main>
+</div>

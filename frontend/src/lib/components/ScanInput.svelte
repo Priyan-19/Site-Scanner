@@ -57,9 +57,9 @@
 	}
 </script>
 
-<div class="relative overflow-hidden pt-16 pb-20 lg:pt-24 lg:pb-32">
+<div class="relative w-full overflow-hidden">
 	<div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-		<div class="mx-auto mb-12 max-w-3xl text-center">
+		<div class="mx-auto max-w-3xl text-center">
 			<div
 				class="bg-primary-light text-primary animate-pulse-soft mb-6 inline-flex items-center space-x-2 rounded-full px-3 py-1 text-xs font-bold tracking-wider uppercase"
 			>
@@ -67,35 +67,29 @@
 				<span>Enterprise Vulnerability Scanner</span>
 			</div>
 			<h1
-				class="mb-6 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl lg:text-6xl"
+				class="mb-6 text-3xl font-extrabold tracking-tight text-white sm:text-4xl lg:text-6xl"
 			>
 				Secure your web <span class="text-primary">infrastructure</span> in real-time.
 			</h1>
-			<p class="mb-10 text-lg leading-relaxed text-slate-600">
+			<p class="mb-10 text-lg leading-relaxed text-neutral-400">
 				SiteScanner provides deep security analysis of your domains, uncovering vulnerabilities,
 				configuration errors, and exposure risks with a single click.
 			</p>
 
 			<div class="group relative mx-auto max-w-2xl">
+
 				<div
-					class="from-primary to-secondary absolute -inset-1 rounded-2xl bg-gradient-to-r opacity-25 blur transition duration-1000 group-hover:opacity-40 group-hover:duration-200 {isFocused
-						? 'opacity-50'
-						: ''}"
-				></div>
-				<div
-					class="relative flex flex-col gap-3 rounded-xl border bg-white p-2 shadow-xl sm:flex-row {error
-						? 'border-red-200'
-						: 'border-slate-200'} transition-all duration-300"
+					class="relative flex flex-col gap-3 rounded-xl bg-[#111111] p-2 sm:flex-row transition-all duration-300"
 				>
-					<div class="relative flex-1">
+					<div class="relative flex-1 border-none">
 						<div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-4">
-							<Globe class="h-5 w-5 {error ? 'text-red-400' : 'text-slate-400'}" />
+							<Globe class="h-5 w-5 {error ? 'text-red-400' : 'text-neutral-500'}" />
 						</div>
 						<input
 							type="text"
 							bind:value={targetUrl}
 							placeholder="Enter domain or URL (e.g., example.com)"
-							class="block w-full border-none bg-transparent py-3 pr-4 pl-11 text-base text-slate-900 placeholder-slate-400 focus:ring-0 sm:py-4 sm:text-lg"
+							class="block w-full border-none bg-transparent py-3 pr-4 pl-11 text-base text-white placeholder-slate-400 focus:ring-0 sm:py-4 sm:text-lg"
 							onkeydown={(e) => e.key === 'Enter' && handleStartScan()}
 							onfocus={() => (isFocused = true)}
 							onblur={() => (isFocused = false)}
@@ -126,7 +120,7 @@
 				{/if}
 			</div>
 
-			<div class="mt-8 flex flex-wrap justify-center gap-6 text-sm font-medium text-slate-500">
+			<div class="mt-8 flex flex-wrap justify-center gap-6 text-sm font-medium text-neutral-400">
 				<div class="flex items-center space-x-1.5">
 					<div class="bg-success h-1.5 w-1.5 rounded-full"></div>
 					<span>Deep Port Scanning</span>

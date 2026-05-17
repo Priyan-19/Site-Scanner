@@ -24,10 +24,10 @@ export function formatUrl(url: string): string {
 
 export function getSeverityColor(severity: string): string {
 	const colors = {
-		low: 'text-emerald-600 bg-emerald-50 border-emerald-100',
-		medium: 'text-amber-600 bg-amber-50 border-amber-100',
-		high: 'text-red-600 bg-red-50 border-red-100',
-		critical: 'text-white bg-slate-900 border-slate-800'
+		low: 'bg-black text-emerald-500 border-emerald-500',
+		medium: 'bg-black text-amber-500 border-amber-500',
+		high: 'bg-black text-orange-500 border-orange-500',
+		critical: 'bg-black text-red-500 border-red-500'
 	};
-	return colors[severity.toLowerCase() as keyof typeof colors] || 'text-slate-600 bg-slate-50';
+	return colors[severity.toLowerCase() as keyof typeof colors] || 'text-neutral-400 bg-[#111111]';
 }

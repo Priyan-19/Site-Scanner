@@ -7,13 +7,13 @@
 	const navItems = [{ name: 'Dashboard', path: '/', icon: LayoutDashboard }];
 </script>
 
-<nav class="glass border-border-light sticky top-0 z-50 border-b">
+<nav class="glass border-border-light z-50 shrink-0 border-b">
 	<div class="px-4 sm:px-6 lg:px-8">
 		<div class="flex h-16 justify-between">
 			<div class="flex items-center">
 				<a href="/" class="flex items-center space-x-2">
 					<Shield class="text-primary h-7 w-7" />
-					<span class="text-lg font-bold tracking-tight text-slate-800">
+					<span class="text-lg font-bold tracking-tight text-neutral-200">
 						Site<span class="text-primary">Scanner</span>
 					</span>
 				</a>
@@ -28,7 +28,7 @@
 						class="hover:text-primary flex items-center space-x-2 text-lg font-bold transition-colors {$page
 							.url.pathname === item.path
 							? 'text-primary'
-							: 'text-slate-600'}"
+							: 'text-neutral-400'}"
 					>
 						<Icon class="h-5 w-5" />
 						<span>{item.name}</span>
@@ -40,7 +40,7 @@
 			<div class="flex items-center md:hidden">
 				<button
 					onclick={() => (isMobileMenuOpen = !isMobileMenuOpen)}
-					class="text-slate-600 hover:text-slate-900 focus:outline-none"
+					class="text-neutral-400 hover:text-white focus:outline-none"
 				>
 					{#if isMobileMenuOpen}
 						<X class="h-6 w-6" />
@@ -63,7 +63,7 @@
 						class="flex items-center space-x-3 rounded-md px-3 py-2 text-lg font-bold {$page.url
 							.pathname === item.path
 							? 'bg-primary-light text-primary'
-							: 'text-slate-600 hover:bg-slate-50'}"
+							: 'text-neutral-400 hover:bg-[#111111]'}"
 						onclick={() => (isMobileMenuOpen = false)}
 					>
 						<Icon class="h-5 w-5" />
