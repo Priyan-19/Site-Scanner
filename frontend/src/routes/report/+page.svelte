@@ -117,25 +117,25 @@
 			class="overflow-hidden rounded-2xl border border-[#333333] bg-[#111111] shadow-2xl print:rounded-none print:border-none print:shadow-none"
 		>
 			<!-- Header Area -->
-			<div class="bg-[#00e6b8] text-black p-10 text-white">
+			<div class="bg-[#00e6b8] p-10 text-[#093022]">
 				<div class="flex flex-col items-start justify-between gap-6 sm:flex-row">
 					<div>
 						<div class="mb-6 flex items-center space-x-2">
-							<div class="bg-primary rounded-lg p-2">
-								<Shield class="h-8 w-8 text-white" />
+							<div class="rounded-lg bg-[#093022] p-2 text-[#00e6b8]">
+								<Shield class="h-8 w-8" />
 							</div>
-							<span class="text-2xl font-black tracking-tight"
-								>Site<span class="text-primary">Scanner</span></span
+							<span class="text-2xl font-black tracking-tight text-[#051f15]"
+								>Site<span class="text-[#093022]/60">Scanner</span></span
 							>
 						</div>
-						<h1 class="mb-2 text-4xl font-extrabold">Security Assessment Report</h1>
-						<p class="font-medium text-neutral-500">Confidential • For Internal Use Only</p>
+						<h1 class="mb-2 text-4xl font-extrabold text-[#051f15]">Security Assessment Report</h1>
+						<p class="font-bold text-[#093022]/70">Confidential • For Internal Use Only</p>
 					</div>
 					<div class="text-left sm:text-right">
-						<div class="mb-1 text-xs font-black tracking-widest text-neutral-400 uppercase">
+						<div class="mb-1 text-xs font-black tracking-widest text-[#093022]/70 uppercase">
 							Report ID
 						</div>
-						<div class="text-primary font-mono text-lg font-bold">{reportData.id}</div>
+						<div class="font-mono text-lg font-bold text-[#051f15]">{reportData.id}</div>
 					</div>
 				</div>
 			</div>
