@@ -30,7 +30,6 @@
 		font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
 		scrollbar-width: none !important;
 		-ms-overflow-style: none !important;
-		overflow: hidden;
 	}
 	body::-webkit-scrollbar {
 		display: none !important;

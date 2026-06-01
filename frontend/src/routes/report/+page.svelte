@@ -12,23 +12,71 @@
 	} from 'lucide-svelte';
 	import { fade } from 'svelte/transition';
 
-	const reportData = {
-		target: 'example-corporate.com',
-		id: 'SCAN-2026-X882',
-		date: 'May 07, 2026',
-		status: 'Completed',
-		score: 82,
-		totalIssues: 14,
-		categories: [
-			{ name: 'HTTP Security Headers', issues: 4, score: 75 },
-			{ name: 'SSL/TLS Configuration', issues: 1, score: 95 },
-			{ name: 'Port Vulnerabilities', issues: 2, score: 60 },
-			{ name: 'Subdomain Exposure', issues: 7, score: 88 }
-		]
-	};
+	import { scanStore } from '$lib/stores/scanStore.svelte';
+	import { onMount } from 'svelte';
+	import { goto } from '$app/navigation';
+
+	let reportData = $derived(
+		scanStore.result
+			? {
+					target: scanStore.result.target,
+					id: scanStore.result.id,
+					date: new Date(scanStore.result.timestamp).toLocaleDateString('en-US', {
+						month: 'short',
+						day: '2-digit',
+						year: 'numeric'
+					}),
+					status: 'Completed',
+					score: scanStore.result.score,
+					totalIssues: scanStore.result.issues ? scanStore.result.issues.length : 0,
+					categories: [
+						{
+							name: 'HTTP Security Headers',
+							issues: scanStore.result.summary?.headers || 0,
+							score: Math.max(0, 100 - (scanStore.result.summary?.headers || 0) * 10)
+						},
+						{
+							name: 'SSL/TLS Configuration',
+							issues: scanStore.result.summary?.ssl || 0,
+							score: Math.max(0, 100 - (scanStore.result.summary?.ssl || 0) * 20)
+						},
+						{
+							name: 'Port Vulnerabilities',
+							issues: scanStore.result.summary?.ports || 0,
+							score: Math.max(0, 100 - (scanStore.result.summary?.ports || 0) * 25)
+						},
+						{
+							name: 'Subdomain Exposure',
+							issues: scanStore.result.summary?.subdomains || 0,
+							score: Math.max(0, 100 - (scanStore.result.summary?.subdomains || 0) * 10)
+						}
+					]
+				}
+			: {
+					target: 'Loading...',
+					id: 'N/A',
+					date: 'N/A',
+					status: 'N/A',
+					score: 0,
+					totalIssues: 0,
+					categories: []
+				}
+	);
+
+	onMount(() => {
+		if (!scanStore.result) {
+			goto('/');
+		}
+	});
 
 	function handlePrint() {
 		window.print();
+	}
+
+	function handleDownloadPdf() {
+		if (!reportData.id || reportData.id === 'N/A') return;
+		const baseUrl = import.meta.env.VITE_API_URL || 'http://localhost:8001/api/v1';
+		window.location.href = `${baseUrl}/report/${reportData.id}?format=pdf`;
 	}
 </script>
 
@@ -55,16 +103,17 @@
 					<span>Print</span>
 				</button>
 				<button
+					onclick={handleDownloadPdf}
 					class="flex items-center space-x-2 rounded-lg bg-red-600 px-4 py-2 text-sm font-bold text-white shadow-sm transition-colors hover:bg-red-700"
 				>
 					<Download class="h-4 w-4" />
-					<span>Download PDF</span>
+					<span>Download PDF Report</span>
 				</button>
 			</div>
 		</div>
-
 		<!-- The Report Document -->
 		<div
+			id="report-document"
 			class="overflow-hidden rounded-2xl border border-[#333333] bg-[#111111] shadow-2xl print:rounded-none print:border-none print:shadow-none"
 		>
 			<!-- Header Area -->
